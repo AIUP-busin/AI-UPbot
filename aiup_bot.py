@@ -1,9 +1,36 @@
 import os
 import logging
 import requests
+import threading
 from datetime import datetime
+from flask import Flask, request as flask_request, jsonify
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardRemove
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
+
+flask_app = Flask(__name__)
+
+@flask_app.route('/hisobot', methods=['POST'])
+def receive_hisobot():
+    try:
+        data = flask_request.get_json()
+        msg = data.get('message', '')
+        token = os.environ.get("TELEGRAM_TOKEN", "8970482071:AAEy6xthMW1btri3XBo7F4M8ySzZdwMudFM")
+        admin_id = os.environ.get("ADMIN_CHAT_ID", "6613741078")
+        res = requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage",
+            json={"chat_id": admin_id, "text": msg}
+        )
+        return jsonify({"ok": True}), 200
+    except Exception as e:
+        return jsonify({"ok": False, "error": str(e)}), 500
+
+@flask_app.route('/', methods=['GET'])
+def health():
+    return "OK", 200
+
+def run_flask():
+    port = int(os.environ.get("PORT", 5000))
+    flask_app.run(host="0.0.0.0", port=port)
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -95,8 +122,9 @@ TEXTS = {
         ),
         "contact_title": (
             "📞 *Bog'lanish:*\n\n"
-            "👤 Menejer: @Ibr0kh1_M\n"
-            "📱 Telefon: +998 77 877 00 84\n"
+            "👤 Menejer: @aiup_manager\n"
+            "📱 Telefon: +998 90 000 00 00\n"
+            "📧 Email: info@aiup.uz\n"
             "🌐 Veb: aiup.uz\n\n"
             "⏰ Ish vaqti: 09:00 — 18:00"
         ),
@@ -145,8 +173,9 @@ TEXTS = {
         ),
         "contact_title": (
             "📞 *Контакты:*\n\n"
-            "👤 Менеджер: @Ibr0kh1_M\n"
-            "📱 Телефон: +998 77 877 00 84\n"
+            "👤 Менеджер: @aiup_manager\n"
+            "📱 Телефон: +998 90 000 00 00\n"
+            "📧 Email: info@aiup.uz\n"
             "🌐 Сайт: aiup.uz\n\n"
             "⏰ Рабочее время: 09:00 — 18:00"
         ),
@@ -195,8 +224,9 @@ TEXTS = {
         ),
         "contact_title": (
             "📞 *Contact us:*\n\n"
-            "👤 Manager: @Ibr0kh1_M\n"
-            "📱 Phone: +998 77 877 00 84\n"
+            "👤 Manager: @aiup_manager\n"
+            "📱 Phone: +998 90 000 00 00\n"
+            "📧 Email: info@aiup.uz\n"
             "🌐 Web: aiup.uz\n\n"
             "⏰ Working hours: 09:00 — 18:00"
         ),
@@ -248,18 +278,26 @@ def ask_gemini(uid, user_text):
 
     if lang == "ru":
         sys = (
-            "Ты умный AI ассистент. Отвечай на любые вопросы. "
+            "Ты умный бизнес-консультант компании AIUP. "
+            "AIUP предоставляет AI решения для бизнеса: Telegram боты (100$), AI агенты (150$), "
+            "системы посещаемости (75$), системы тестирования (75$). "
+            "Отвечай ТОЛЬКО по теме бизнеса и AI. На другие темы: 'Извините, я консультирую только по бизнес-вопросам'. "
             "Отвечай кратко, по-русски, с эмодзи."
         )
     elif lang == "en":
         sys = (
-            "You are a smart AI assistant. Answer any question. "
+            "You are a smart business consultant for AIUP company. "
+            "AIUP provides AI solutions: Telegram bots ($100), AI agents ($150), "
+            "attendance systems ($75), testing systems ($75). "
+            "Answer ONLY business and AI related questions. For others: 'Sorry, I only consult on business topics'. "
             "Reply briefly in English with emojis."
         )
     else:
         sys = (
-            "Sen aqlli AI yordamchisisan. Har qanday savolga javob bera olasan. "
-            "O'zbek tilida qisqa, do'stona va emoji bilan javob ber."
+            "Sen AIUP kompaniyasining aqlli biznes maslahatchiisisan. "
+            "AIUP xizmatlari: Telegram bot (100$), AI agent (150$), keldi-ketdi tizimi (75$), test tizimi (75$). "
+            "FAQAT biznes va AI mavzularida javob ber. Boshqa savollarga: 'Kechirasiz, men faqat biznes masalalari bo'yicha maslahat beraman'. "
+            "Qisqa, o'zbek tilida, emoji bilan javob ber."
         )
 
     prompt = sys + (f"\n\nOldingi suhbat:\n{hist_txt}" if hist_txt else "") + f"\n\nFoydalanuvchi: {user_text}\nAgent:"
@@ -519,6 +557,10 @@ def main():
     app.add_handler(CallbackQueryHandler(handle_callback))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     logger.info("AIUP Bot ishga tushdi!")
+    # Flask ni alohida thread da ishga tushirish
+    t = threading.Thread(target=run_flask, daemon=True)
+    t.start()
+    logger.info("Flask server ishga tushdi!")
     app.run_polling(allowed_updates=["message", "callback_query"])
 
 if __name__ == "__main__":
