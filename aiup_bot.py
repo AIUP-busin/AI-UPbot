@@ -111,14 +111,22 @@ TEXTS = {
         "price_title": "💰 *Narxlar ro'yxati:*\n\n",
         "order_title": "📋 *Buyurtma berish*\n\nQaysi xizmatni buyurtma qilmoqchisiz?",
         "portfolio_title": (
-            "📁 *Portfolio — Bizning ishlarimiz:*\n\n"
-            "✅ 20+ muvaffaqiyatli loyiha\n"
-            "✅ Telegram botlar — restoran, HR, e-commerce\n"
-            "✅ AI agentlar — mijozlar qo'llab-quvvatlash\n"
-            "✅ Keldi-ketdi tizimlari — 5+ kafe va kompaniya\n"
-            "✅ HR test tizimlari — 100+ xodim baholangan\n\n"
-            "📱 Namunalar: @aiup_demo\n"
-            "🌐 Veb: aiup.uz"
+            "📁 *Portfolio — Ottimo uchun qilingan ishlar:*\n\n"
+            "1\ufe0f\u20e3 *Ottimo Agent* — AI chatbot\n"
+            "Gemini 2.0 asosida. Filiallar, ish vaqti, vakansiyalar.\n"
+            "🔗 ottimo\-agent\.vercel\.app\n\n"
+            "2\ufe0f\u20e3 *Ishga qabul tizimi* — HR onboarding\n"
+            "Barista, kassir, ofitsiant uchun test va video darslar.\n"
+            "🔗 ottim\-ishga\-qabul\-qilish\.vercel\.app\n\n"
+            "3\ufe0f\u20e3 *Keldi\-ketdi tizimi* — Davomat\n"
+            "Xodimlar kelish\-ketishi, kech qolsa jarima avtomatik.\n"
+            "🔗 ottimo\-keldi\-ketdi\.vercel\.app\n\n"
+            "4\ufe0f\u20e3 *HR Sinov tizimi* — Baholash\n"
+            "Professional test platformasi, natijalar avtomatik.\n"
+            "🔗 ottimo\-sinov\.vercel\.app\n\n"
+            "5\ufe0f\u20e3 *Ottimo Tizim* — Hisobot boshqaruvi\n"
+            "Rahbar + xodim portal. Kunlik hisobot, Telegram SMS.\n\n"
+            "🌐 Sayt: aiup\.uz"
         ),
         "contact_title": (
             "📞 *Bog'lanish:*\n\n"
@@ -162,14 +170,22 @@ TEXTS = {
         "price_title": "💰 *Прайс-лист:*\n\n",
         "order_title": "📋 *Оформить заказ*\n\nКакую услугу хотите заказать?",
         "portfolio_title": (
-            "📁 *Портфолио — Наши работы:*\n\n"
-            "✅ 20+ успешных проектов\n"
-            "✅ Telegram боты — ресторан, HR, e-commerce\n"
-            "✅ ИИ агенты — поддержка клиентов\n"
-            "✅ Системы учёта посещаемости — 5+ компаний\n"
-            "✅ HR системы тестирования — 100+ сотрудников\n\n"
-            "📱 Демо: @aiup_demo\n"
-            "🌐 Сайт: aiup.uz"
+            "📁 *Портфолио — Проекты для Ottimo:*\n\n"
+            "1\ufe0f\u20e3 *Ottimo Agent* — AI чат\-бот\n"
+            "На базе Gemini 2\.0\. Филиалы, вакансии, расписание.\n"
+            "🔗 ottimo\-agent\.vercel\.app\n\n"
+            "2\ufe0f\u20e3 *Система найма* — HR онбординг\n"
+            "Тесты и видеоуроки для каждой должности.\n"
+            "🔗 ottim\-ishga\-qabul\-qilish\.vercel\.app\n\n"
+            "3\ufe0f\u20e3 *Учёт посещаемости* — Контроль\n"
+            "Приход\-уход, автоштрафы за опоздания.\n"
+            "🔗 ottimo\-keldi\-ketdi\.vercel\.app\n\n"
+            "4\ufe0f\u20e3 *HR Тестирование* — Оценка\n"
+            "Профессиональная платформа тестирования.\n"
+            "🔗 ottimo\-sinov\.vercel\.app\n\n"
+            "5\ufe0f\u20e3 *Ottimo Tizim* — Управление отчётами\n"
+            "Панель руководителя + сотрудника. SMS в Telegram.\n\n"
+            "🌐 Сайт: aiup\.uz"
         ),
         "contact_title": (
             "📞 *Контакты:*\n\n"
@@ -213,14 +229,22 @@ TEXTS = {
         "price_title": "💰 *Price list:*\n\n",
         "order_title": "📋 *Place an order*\n\nWhich service would you like to order?",
         "portfolio_title": (
-            "📁 *Portfolio — Our works:*\n\n"
-            "✅ 20+ successful projects\n"
-            "✅ Telegram bots — restaurant, HR, e-commerce\n"
-            "✅ AI agents — customer support\n"
-            "✅ Attendance systems — 5+ companies\n"
-            "✅ HR testing systems — 100+ employees evaluated\n\n"
-            "📱 Demo: @aiup_demo\n"
-            "🌐 Web: aiup.uz"
+            "📁 *Portfolio — Built for Ottimo:*\n\n"
+            "1\ufe0f\u20e3 *Ottimo Agent* — AI Chatbot\n"
+            "Powered by Gemini 2\.0\. Branches, hours, vacancies.\n"
+            "🔗 ottimo\-agent\.vercel\.app\n\n"
+            "2\ufe0f\u20e3 *Hiring System* — HR Onboarding\n"
+            "Tests and video lessons for each position.\n"
+            "🔗 ottim\-ishga\-qabul\-qilish\.vercel\.app\n\n"
+            "3\ufe0f\u20e3 *Attendance System* — Tracking\n"
+            "Auto\-tracking, late penalties calculated instantly.\n"
+            "🔗 ottimo\-keldi\-ketdi\.vercel\.app\n\n"
+            "4\ufe0f\u20e3 *HR Testing* — Evaluation\n"
+            "Professional testing platform, auto\-results.\n"
+            "🔗 ottimo\-sinov\.vercel\.app\n\n"
+            "5\ufe0f\u20e3 *Ottimo Tizim* — Report Management\n"
+            "Admin + employee portal\. Daily reports via Telegram.\n\n"
+            "🌐 Website: aiup\.uz"
         ),
         "contact_title": (
             "📞 *Contact us:*\n\n"
