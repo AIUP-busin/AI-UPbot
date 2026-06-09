@@ -485,7 +485,20 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         kb = InlineKeyboardMarkup([[InlineKeyboardButton(get_text(uid, "order_btn"), callback_data="show_order")]])
         await update.message.reply_text(price_msg, parse_mode="Markdown", reply_markup=kb)
     elif action == "portfolio":
-        await update.message.reply_text(get_text(uid, "portfolio_title"), parse_mode="Markdown", reply_markup=get_menu(uid))
+        portfolio_kb = InlineKeyboardMarkup([
+            [InlineKeyboardButton("1️⃣ Ottimo Agent", url="https://ottimo-agent.vercel.app")],
+            [InlineKeyboardButton("2️⃣ Ishga qabul tizimi", url="https://ottim-ishga-qabul-qilish.vercel.app")],
+            [InlineKeyboardButton("3️⃣ Keldi-ketdi tizimi", url="https://ottimo-keldi-ketdi.vercel.app")],
+            [InlineKeyboardButton("4️⃣ HR Sinov tizimi", url="https://ottimo-sinov.vercel.app")],
+            [InlineKeyboardButton("5️⃣ Ottimo Tizim (Hisobot)", url="https://aiup.uz")],
+        ])
+        lang = get_lang(uid)
+        titles = {
+            "uz": "📁 *Ottimo uchun qilingan 5 ta loyiha:*\n\nHar birini bosib ko'ring 👇",
+            "ru": "📁 *5 проектов для Ottimo:*\n\nНажмите чтобы открыть 👇",
+            "en": "📁 *5 projects built for Ottimo:*\n\nTap to open 👇"
+        }
+        await update.message.reply_text(titles.get(lang, titles["uz"]), parse_mode="Markdown", reply_markup=portfolio_kb)
     elif action == "contact":
         await update.message.reply_text(get_text(uid, "contact_title"), parse_mode="Markdown", reply_markup=get_menu(uid))
     elif action == "ai":
